@@ -1,0 +1,25 @@
+.search-by {
+  ul {
+    display: flex;
+    gap: 2rem;
+
+    * {
+      display: block;
+      padding: 1rem;
+    }
+
+    > :not(.active):hover {
+      display: block;
+      padding: 1rem;
+      background-color: #eeeeee9c;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    li.active {
+      display: block;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+}
