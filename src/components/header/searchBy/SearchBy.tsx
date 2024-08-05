@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import "./searchBy.scss";
-export default function Search() {
+export default function SearchBy() {
   const [active, setActive] = useState(0);
 
   const searchArray = ["stays", "Experience by"];

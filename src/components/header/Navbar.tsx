@@ -1,14 +1,14 @@
 import React from "react";
 import Logo from "./logo/Logo";
 import Menu from "./menu/Menu";
-import Search from "./searchBy/SearchBy";
+import SearchBy from "./searchBy/SearchBy";
 import "./navbar.scss";
 
 export default function Navbar() {
   return (
     <div className="nav navbar-main">
       <Logo />
-      <Search />
+      <SearchBy />
       <Menu />
     </div>
   );

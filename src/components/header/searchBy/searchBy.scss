@@ -2,6 +2,7 @@
   ul {
     display: flex;
     gap: 2rem;
+    text-transform: capitalize;
 
     * {
       display: block;
@@ -19,7 +20,6 @@
     li.active {
       display: block;
       font-weight: 600;
-      text-transform: capitalize;
     }
   }
 }
