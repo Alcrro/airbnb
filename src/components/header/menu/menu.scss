@@ -12,9 +12,18 @@
       font-family: "Bootstrap-icons";
       font-size: 24px;
       color: #000;
+
+      &:hover ~ .dropdown-menu {
+        display: block;
+        color: #000;
+      }
     }
     &:hover::after {
       cursor: pointer;
     }
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 4px 4px rgba(113, 234, 255, 0.301);
   }
 }

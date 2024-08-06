@@ -1,0 +1,28 @@
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  top: 50px;
+  right: 0;
+  width: 200px;
+  margin: 0 auto;
+
+  border-radius: 10px;
+  z-index: 999;
+  color: #000;
+}
+
+.dropdown-menu-icon:hover .dropdown-menu {
+  .dropdown-menu-inner {
+    display: block;
+    padding: 10px 20px;
+
+    .auth-container,
+    .aux-container {
+      padding: 10px 0;
+    }
+    .auth-container {
+      border-bottom: 1px solid #eee;
+    }
+  }
+}

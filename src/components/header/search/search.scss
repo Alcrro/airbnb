@@ -24,7 +24,6 @@
       padding: 0 1.5rem;
       //   border-radius: 30px;
       margin: 0.75rem 0;
-
       border-right: 1px solid #ddd;
 
       label {
@@ -36,6 +35,15 @@
         font-size: 14px;
       }
     }
+
+    .where:has(:hover) {
+      .label-group {
+        background-color: white;
+        border-radius: 30px;
+        border: unset;
+      }
+    }
+
     &:last-child {
       .who-quest {
         .label-group {

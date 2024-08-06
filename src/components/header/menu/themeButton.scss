@@ -1,0 +1,21 @@
+.theme-button {
+  height: 100%;
+}
+
+.theme-button.light {
+  &::after {
+    content: "\F494";
+    font-family: "Bootstrap-icons";
+    color: #000;
+    font-size: 20px;
+  }
+}
+
+.theme-button.dark {
+  &::after {
+    content: "\F1D1";
+    font-family: "Bootstrap-icons";
+    color: #000;
+    font-size: 20px;
+  }
+}

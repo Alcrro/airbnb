@@ -2,32 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+// :root {
+//   --foreground-rgb: 0, 0, 0;
+//   --background-start-rgb: 214, 219, 220;
+//   --background-end-rgb: 255, 255, 255;
+//   --input-background: 255, 255, 255;
+// }
+
+:root.light {
+  ---background-color: #e7e7e7;
+  ---background-div-color: #000;
+  ---text-color: #000;
+  ---text-div-color: #fff;
+  ---border-light-color: #000;
+  ---border-color: #fff;
+  ---text-version: #555555;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root.dark {
+  ---background-color: #1b2538;
+  ---background-div-color: #fff;
+  ---text-color: #fff;
+  ---text-div-color: #000;
+  ---border-light-color: #000;
+  ---border-color: #fff;
+  ---text-version: #d8d8d8;
+}
+
+html.light {
+  background: var(---background-color);
+  color: var(---text-color);
+  border-color: var(---border-color);
+}
+html.dark {
+  background: var(---background-color);
+  color: var(---text-color);
+  border-color: var(---border-color);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+input {
+  background: var(--input-background);
+}
+
+.main {
+  display: block;
+  width: 100%;
+
+  max-width: 96rem;
+  margin: 0 auto;
 }
