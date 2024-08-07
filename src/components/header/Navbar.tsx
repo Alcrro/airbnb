@@ -5,13 +5,13 @@ import SearchBy from "./searchBy/SearchBy";
 import "./navbar.scss";
 import Search from "./search/Search";
 
-export default function Navbar() {
+export default function Navbar({ params }: { params: any }) {
   return (
     <div className="nav navbar-main">
       <Logo />
       <SearchBy />
       <Menu />
-      <Search />
+      <Search params={params} />
     </div>
   );
 }

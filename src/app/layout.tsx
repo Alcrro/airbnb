@@ -13,14 +13,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: any;
 }>) {
+  console.log(params);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="">
         <ThemeProvider attribute="class">
-          <Navbar />
+          <Navbar params={params} />
           <div className="main">{children}</div>
         </ThemeProvider>
       </body>

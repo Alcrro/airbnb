@@ -1,7 +1,7 @@
 import React from "react";
 import "./search.scss";
 
-export default function Search() {
+export default function Search({ params }: { params: any }) {
   return (
     <div className="search">
       <div className="search-inner">
