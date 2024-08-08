@@ -1,9 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import "./searchBy.scss";
-import Link from "next/link";
+
+import { useNavbarContext } from "@/context/navbarContext/NavbarContext";
+
 export default function SearchBy() {
-  const [active, setActive] = useState(0);
+  const { isActive, setIsActive } = useNavbarContext();
+
+  const searchedBy = (key: number) => {
+    console.log(key);
+
+    return setIsActive((prev) => (prev === key ? key : key));
+  };
 
   const searchArray = ["stays", "Experience"];
   return (
@@ -12,12 +20,10 @@ export default function SearchBy() {
         {searchArray.map((search: string, key) => (
           <li
             key={key}
-            className={`stays${active === key ? " active" : ""}`}
-            onClick={() => setActive((prev) => (prev === 0 ? 1 : 0))}
+            className={`stays${isActive === key ? " active" : ""}`}
+            onClick={() => searchedBy(key)}
           >
-            <Link href={`/search-by/${search.toLocaleLowerCase()}`}>
-              {search}
-            </Link>
+            {search}
           </li>
         ))}
       </ul>

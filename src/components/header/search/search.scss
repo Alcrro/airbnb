@@ -1,94 +1,104 @@
-.search {
+.search-container {
   display: flex;
   flex: 1 0 33%;
   flex-basis: 100%;
-  align-items: center;
-  justify-content: center;
-  color: #000;
 
-  .search-inner {
+  .search {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
     width: 100%;
     max-width: 54rem;
-    padding: 0 2rem;
-    padding-right: 6px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background-color: white;
     border-radius: 30px;
 
-    .label-group {
+    .search-inner {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       background-color: white;
-      padding: 0 1.5rem;
-      //   border-radius: 30px;
-      margin: 0.75rem 0;
-      border-right: 1px solid #ddd;
+      padding: 0 2rem;
+      padding-right: 6px;
+      border-radius: 30px;
 
-      label {
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      input {
-        font-size: 14px;
-      }
-    }
-
-    .where:has(:hover) {
       .label-group {
+        display: flex;
+        flex-direction: column;
         background-color: white;
-        border-radius: 30px;
-        border: unset;
-      }
-    }
+        padding: 0 1.5rem;
+        //   border-radius: 30px;
+        margin: 0.75rem 0;
+        border-right: 1px solid #ddd;
 
-    &:last-child {
-      .who-quest {
-        .label-group {
-          border-right: unset;
+        label {
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        input {
+          font-size: 14px;
         }
       }
-    }
 
-    .where .label-group {
-      display: block;
+      .where:has(:hover) {
+        .label-group {
+          background-color: white;
+          border-radius: 30px;
+          border: unset;
+        }
+      }
 
-      min-width: 170px;
-      max-width: 220px;
+      &:last-child {
+        .who-quest {
+          .label-group {
+            border-right: unset;
+          }
+        }
+      }
 
-      input {
+      .where .label-group {
         display: block;
-        width: 100%;
+
+        min-width: 170px;
+        max-width: 220px;
+
+        input {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .check-in .label-group,
+      .check-out .label-group {
+        display: block;
+        //   width: 100%;
+        min-width: 140px;
+        max-width: 160px;
+
+        input {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .who-quest .label-group {
+        display: block;
+
+        min-width: 120px;
+        max-width: 170px;
+
+        input {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .experience.label-group {
+        width: unset;
       }
     }
-
-    .check-in .label-group,
-    .check-out .label-group {
-      display: block;
-      //   width: 100%;
-      min-width: 140px;
-      max-width: 160px;
-
-      input {
-        display: block;
-        width: 100%;
-      }
-    }
-
-    .who-quest .label-group {
-      display: block;
-
-      min-width: 120px;
-      max-width: 170px;
-
-      input {
-        display: block;
-        width: 100%;
-      }
-    }
-
     .search-button {
       display: flex;
       justify-content: center;

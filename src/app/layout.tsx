@@ -4,6 +4,7 @@ import "./globals.scss";
 import Navbar from "../components/header/Navbar";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { ThemeProvider } from "next-themes";
+import { NavbarProvider } from "@/context/navbarContext/NavbarContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -13,19 +14,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
+
 }: Readonly<{
   children: React.ReactNode;
-  params: any;
+
 }>) {
-  console.log(params);
+
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="">
         <ThemeProvider attribute="class">
-          <Navbar params={params} />
-          <div className="main">{children}</div>
+          <NavbarProvider>
+            <Navbar  />
+            <div className="main">{children}</div>
+          </NavbarProvider>
         </ThemeProvider>
       </body>
     </html>
