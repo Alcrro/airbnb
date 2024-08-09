@@ -1,0 +1,209 @@
+.search-container {
+  display: flex;
+  flex: 1 0 33%;
+  flex-basis: 100%;
+  margin-top: 10px;
+
+  .search {
+    display: flex;
+    width: 100%;
+    max-width: 54rem;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background-color: white;
+    border-radius: 30px;
+
+    @media (min-width: 720px) {
+      .search-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // background-color: white;
+        padding: 0 2rem;
+        padding-right: 6px;
+        border-radius: 30px;
+        width: 100%;
+
+        .label-group {
+          display: flex;
+          flex-direction: column;
+          // background-color: white;
+          padding: 0 1.5rem;
+          //   border-radius: 30px;
+          margin: 0.75rem 0;
+          border-right: 1px solid #ddd;
+          cursor: pointer;
+
+          label {
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: capitalize;
+          }
+
+          input {
+            font-size: 14px;
+            cursor: pointer;
+          }
+        }
+
+        .type:hover {
+          background-color: white;
+          border-radius: 32px;
+          border: unset;
+        }
+
+        &:last-child {
+          .who-quest {
+            .label-group {
+              border-right: unset;
+            }
+          }
+        }
+
+        display: flex;
+        .check-in .label-group,
+        .check-out .label-group {
+          display: block;
+          width: 100%;
+
+          input {
+            display: block;
+            width: 100%;
+          }
+        }
+
+        .where .label-group {
+          display: block;
+
+          min-width: 150px;
+          max-width: 200px;
+
+          input {
+            display: block;
+            width: 100%;
+          }
+        }
+
+        .who-guest .label-group {
+          display: block;
+          order: 3;
+          min-width: 120px;
+          max-width: 170px;
+
+          input {
+            display: block;
+            width: 100%;
+          }
+        }
+
+        .who-guest {
+          order: 3;
+        }
+        .experience {
+          width: 100%;
+          max-width: 313.18px;
+          order: 1;
+        }
+      }
+    }
+  }
+  @media (min-width: 720px) {
+    .search:has(.type:hover) {
+      background-color: #ddd;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 719px) {
+  .search-container {
+    .search {
+      display: flex;
+      justify-content: unset;
+
+      width: 100%;
+    }
+    .search-inner {
+      display: flex;
+      flex-wrap: wrap;
+      order: 1;
+      width: 100%;
+      padding: 0 10px;
+
+      &::before {
+        display: flex;
+        content: "Where to?";
+        font-weight: 700;
+        width: 100%;
+        // flex-basis: 100%;
+        // width: 100%;
+      }
+
+      input {
+        display: none;
+      }
+
+      .label-group {
+        display: none;
+      }
+
+      .where {
+        display: none;
+      }
+
+      .check-in::after {
+        content: "• Check in";
+        color: #818181;
+        font-size: 14px;
+      }
+      .check-out::after {
+        content: "• Check Out";
+        color: #818181;
+        font-size: 14px;
+      }
+      .who-guest::after {
+        content: "• Who";
+        color: #818181;
+        font-size: 14px;
+      }
+
+      .check-dates {
+        display: flex;
+        flex-wrap: wrap;
+        // gap: 5px;
+      }
+      .type {
+        flex-wrap: wrap;
+        white-space: nowrap;
+        padding-right: 10px;
+      }
+      .check-out {
+        padding-right: 5px;
+      }
+      .type:last-child {
+        flex: unset;
+      }
+    }
+
+    .search-button {
+      padding: 0 10px;
+
+      @media (max-width: 320px) {
+        width: unset;
+      }
+      .icon {
+        background: white;
+
+        &::after {
+          color: #000;
+          font-size: 22px;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+}

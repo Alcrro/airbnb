@@ -8,12 +8,19 @@ export default function Profile() {
   const [isLogged, setIsLogged] = useState(false);
   return (
     <div className="user-profile">
-      {!isLogged ? (
+      {isLogged ? (
         <Link href="/login">
           <div className="profile-guest"></div>
         </Link>
       ) : (
-        <Image src={"/"} alt="" width={1000} height={1000}></Image>
+        <Link href="/profile" className="li-profile">
+          <Image
+            src={"/images/profile/eu.png"}
+            alt=""
+            width={1000}
+            height={1000}
+          ></Image>
+        </Link>
       )}
     </div>
   );

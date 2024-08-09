@@ -1,0 +1,15 @@
+.aux-navbar {
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+  ul {
+    display: flex;
+    gap: 14px;
+    overflow-x: scroll;
+    li {
+      display: block;
+      padding: 10px;
+      white-space: nowrap;
+    }
+  }
+}

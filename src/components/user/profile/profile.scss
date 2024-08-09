@@ -1,5 +1,8 @@
 .user-profile {
+  display: block;
+  padding: 5px 0;
   .profile-guest {
+    display: block;
     &::after {
       content: "\F4D7";
       font-family: "Bootstrap-icons";
@@ -9,10 +12,12 @@
     &:hover::after {
       cursor: pointer;
     }
-    img {
-      display: block;
-      width: 25px;
-      height: 25px;
-    }
+  }
+  img {
+    display: block;
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
   }
 }

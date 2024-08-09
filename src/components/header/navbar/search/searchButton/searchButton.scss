@@ -1,0 +1,25 @@
+.search-button {
+  display: flex;
+  justify-content: center;
+  
+  width: 20%;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    background: red;
+    border-radius: 50%;
+    // margin: 0 auto;
+
+    &::after {
+      content: "\F52A";
+      font-family: "Bootstrap-icons";
+      font-size: 18px;
+      font-weight: 800;
+      color: white;
+    }
+  }
+}

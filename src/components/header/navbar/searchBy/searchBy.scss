@@ -1,4 +1,9 @@
 .search-by {
+  display: block;
+  @media (max-width: 719px) {
+    display: none;
+  }
+
   ul {
     display: flex;
     gap: 2rem;
