@@ -1,6 +1,6 @@
 import React from "react";
 import ModalPropTypeList from "./ModalPropTypeList";
-import Link from "next/link";
+
 import LiTypes from "./LiTypes";
 
 export default function PropertiesTypeList({
@@ -10,8 +10,8 @@ export default function PropertiesTypeList({
 }) {
   return (
     <ModalPropTypeList>
-      {propertyTypes.map((propTypes: any, key: number) => (
-        <LiTypes key={key}  propTypes={propTypes} />
+      {propertyTypes?.map((propTypes: any, key: number) => (
+        <LiTypes key={key} propTypes={propTypes} />
       ))}
     </ModalPropTypeList>
   );

@@ -1,0 +1,15 @@
+.no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cccccc8e;
+  height: 320px;
+  border-radius: 12px;
+
+  &::after {
+    content: "\F42A";
+    font-family: "Bootstrap-icons";
+    font-size: 120px;
+    color: #4e4e4e;
+  }
+}

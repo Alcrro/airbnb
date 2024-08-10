@@ -1,31 +1,16 @@
 import { ConnectDB } from "@/database/ConnectDB";
-import PropertyTypes from "@/models/auxNavbar/PropertyTypes";
+import PropertyType from "@/models/auxNavbar/PropertyType";
+
 import { NextRequest, NextResponse } from "next/server";
 
 ConnectDB();
 
 export async function GET(req: NextRequest) {
   try {
-    const propertyTypes = await PropertyTypes.aggregate([
-      {
-        $group: {
-          _id: null,
-          property_type: { $addToSet: "$property_type" },
-        },
-      },
-      {
-        $unwind: "$property_type",
-      },
-      {
-        $project: {
-          _id: 0,
-        },
-      },
-    ]);
-    console.log(propertyTypes);
+    const propertyType = await PropertyType.find();
 
     return NextResponse.json(
-      { success: true, message: "Load successfully", propertyTypes },
+      { success: true, message: "Load successfully", propertyType },
       { status: 200 }
     );
   } catch (error) {

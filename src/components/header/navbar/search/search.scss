@@ -49,12 +49,6 @@
           }
         }
 
-        .type:hover {
-          background-color: white;
-          border-radius: 32px;
-          border: unset;
-        }
-
         &:last-child {
           .who-quest {
             .label-group {
@@ -73,6 +67,15 @@
             display: block;
             width: 100%;
           }
+        }
+
+        > * {
+          display: block;
+        }
+        > *:hover {
+          background-color: white;
+          border-radius: 32px;
+          border: unset;
         }
 
         .where .label-group {
