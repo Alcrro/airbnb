@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     HOST_URI: process.env.HOST_URI,
-
     MONGO_URI: process.env.MONGO_URI,
   },
   images: {

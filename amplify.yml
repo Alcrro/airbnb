@@ -7,7 +7,7 @@ frontend:
 
     build:
       commands:
-        - echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env.local
+        - echo "HOST_URI=$HOST_URI" >> .env.local
         - echo "MONGO_URI=$MONGO_URI" >> .env.local
         - npm run build
   artifacts:

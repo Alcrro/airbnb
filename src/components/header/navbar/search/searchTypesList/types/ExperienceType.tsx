@@ -10,7 +10,8 @@ export default function ExperienceType({
     <div className={`${category.category} type`}>
       <div className="label-group">
         <label htmlFor="experience">{category.name.toLocaleUpperCase()}</label>
-        <input type="text" placeholder="Search destination" disabled />
+        <span>Search by other people experience</span>
+        <input type="text" placeholder="Search destination" hidden />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import React from "react";
 import WhereType from "./types/WhereType";
 import CheckInType from "./types/CheckInType";
 import CheckOnType from "./types/CheckOnType";
+import WhereTabs from "../tabs/WhereTabs";
 
 export default function SearchTypesList({
   category,
@@ -20,11 +21,11 @@ export default function SearchTypesList({
     category.category === "where" ? (
       <WhereType category={category} />
     ) : category.category === "check-in" ? (
-      <div className="">
+      <div className="relative">
         <CheckInType category={category} />
       </div>
     ) : category.category === "check-out" ? (
-      <div className="">
+      <div className="relative">
         <CheckOnType category={category} />
       </div>
     ) : category.category === "who-guest" ? (
@@ -37,9 +38,10 @@ export default function SearchTypesList({
       category.category !== "check-in" &&
       category.category !== "check-out" && (
         <div className={`${category.category} type`}>
-          <div className="label-group">
+          <div className="label-group relative">
             <label htmlFor="where">{category.name}</label>
-            <input type="text" placeholder="Search destination" disabled />
+            <span>Search destination</span>
+            <input type="text" placeholder="Search destination" hidden />
           </div>
         </div>
       )

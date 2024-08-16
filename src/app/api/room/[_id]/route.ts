@@ -3,24 +3,20 @@ import Rooms from "@/models/rooms/Rooms";
 import { NextRequest, NextResponse } from "next/server";
 ConnectDB();
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest, { params }: { params: any }) {
   try {
-    const rooms = await Rooms.aggregate([
-      {
-        $match: {
-          name: { $ne: "" },
-        },
-      },
+ 
 
+    const room = await Rooms.aggregate([
       {
-        $limit: 20,
+        $match: params,
       },
     ]);
 
     return NextResponse.json({
       success: true,
       message: "Load rooms successfully",
-      rooms,
+      room,
     });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
