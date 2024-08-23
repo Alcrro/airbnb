@@ -1,11 +1,15 @@
 "use client";
 import { ISearchData } from "@/_lib/navbar/search/searchData";
 import React, { useEffect, useRef } from "react";
-
 import { useNavbarContext } from "@/context/navbarContext/NavbarContext";
-import WhereTabs from "../../tabs/WhereTabs";
 
-export default function WhereType({ category }: { category: ISearchData }) {
+export default function WhereType({
+  children,
+  category,
+}: {
+  children: React.ReactNode;
+  category: ISearchData;
+}) {
   const { isActive, indexNavbarType, setIndexNavbarType } = useNavbarContext();
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -34,12 +38,7 @@ export default function WhereType({ category }: { category: ISearchData }) {
       onClick={() => setIndexNavbarType((prev) => (prev = category.id))}
       ref={wrapperRef}
     >
-      <div className="label-group">
-        <label htmlFor="where">{category.name}</label>
-        <span>Search destination</span>
-        <input type="text" placeholder="Search destination" hidden />
-      </div>
-      {indexNavbarType === category.id ? <WhereTabs /> : null}
+      {children}
     </div>
   );
 }

@@ -9,17 +9,21 @@ export default function CheckInType({ category }: { category: ISearchData }) {
   const { isActive, indexNavbarType, setIndexNavbarType } = useNavbarContext();
 
   return (
-    <div
-      className={`${category.category} type`}
-      onClick={() => setIndexNavbarType((prev) => (prev = category.id))}
-    >
-      <div className="label-group">
-        <label htmlFor="check-in">{category.name}</label>
-        <span>Add dates</span>
-        <input type="text" placeholder="Search destination" hidden />
-      </div>
+    category.category === "check-in" && (
+      <div className="relative">
+        <div
+          className={`${category.category} type`}
+          onClick={() => setIndexNavbarType((prev) => (prev = category.id))}
+        >
+          <div className="label-group">
+            <label htmlFor="check-in">{category.name}</label>
+            <span>Add dates</span>
+            <input type="text" placeholder="Search destination" hidden />
+          </div>
 
-      {indexNavbarType === category.id ? <CheckInTabs /> : null}
-    </div>
+          {indexNavbarType === category.id && <CheckInTabs />}
+        </div>
+      </div>
+    )
   );
 }
