@@ -1,5 +1,5 @@
-import React from "react";
+import SignupForm from "@/features/auth/components/SignupForm";
 
-export default function Signup() {
-  return <div>signin</div>;
+export default function SignupPage() {
+  return <SignupForm />;
 }

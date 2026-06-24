@@ -1,0 +1,621 @@
+// ── Modal backdrop ──────────────────────────────────────────
+.wl-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+// ── Modal card ──────────────────────────────────────────────
+.wl-modal {
+  background: var(---background-color);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+
+  html.dark & {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #ebebeb;
+
+    html.dark & {
+      border-color: #333;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(---text-color);
+      margin: 0;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(---text-color);
+    font-size: 18px;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 150ms;
+
+    &:hover {
+      background: #f0f0f0;
+
+      html.dark & {
+        background: #333;
+      }
+    }
+  }
+
+  &__loading {
+    padding: 24px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 120ms;
+
+    &:hover {
+      background: #f7f7f7;
+
+      html.dark & {
+        background: #1e1e1e;
+      }
+    }
+
+    &--saved .wl-modal__item-heart {
+      color: #ff385c;
+    }
+  }
+
+  &__item-cover {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ebebeb;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    html.dark & {
+      background: #2a2a2a;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    i {
+      font-size: 20px;
+      color: #aaa;
+    }
+  }
+
+  &__item-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__item-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(---text-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__item-count {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  &__item-heart {
+    font-size: 16px;
+    color: #ccc;
+    flex-shrink: 0;
+    transition: color 150ms;
+  }
+
+  &__add-new {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-top: 1px solid #ebebeb;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(---text-color);
+    transition: background 120ms;
+
+    html.dark & {
+      border-color: #333;
+    }
+
+    &:hover {
+      background: #f7f7f7;
+
+      html.dark & {
+        background: #1e1e1e;
+      }
+    }
+  }
+
+  &__new-list {
+    padding: 16px 24px;
+    border-top: 1px solid #ebebeb;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    html.dark & {
+      border-color: #333;
+    }
+
+    input {
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+      background: var(---background-color);
+      color: var(---text-color);
+      outline: none;
+
+      html.dark & {
+        border-color: #444;
+      }
+
+      &:focus {
+        border-color: #222;
+
+        html.dark & {
+          border-color: #aaa;
+        }
+      }
+    }
+  }
+
+  &__new-list-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  &__btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 150ms, opacity 150ms;
+
+    &--ghost {
+      background: none;
+      color: var(---text-color);
+      border: 1px solid #ddd;
+
+      html.dark & {
+        border-color: #444;
+      }
+
+      &:hover {
+        background: #f0f0f0;
+
+        html.dark & {
+          background: #2a2a2a;
+        }
+      }
+    }
+
+    &--primary {
+      background: #222;
+      color: #fff;
+
+      html.dark & {
+        background: #fff;
+        color: #222;
+      }
+
+      &:hover {
+        background: #444;
+
+        html.dark & {
+          background: #ddd;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// ── Login prompt ────────────────────────────────────────────
+.wl-login-prompt {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  &__card {
+    position: relative;
+    background: var(---background-color);
+    border-radius: 16px;
+    padding: 36px 32px 28px;
+    text-align: center;
+    max-width: 320px;
+    width: 100%;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+
+    p {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(---text-color);
+      margin: 12px 0 20px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(---text-color);
+    font-size: 16px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    &:hover {
+      background: #f0f0f0;
+
+      html.dark & {
+        background: #333;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: 28px;
+    color: #ff385c;
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #ff385c;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 150ms;
+
+    &:hover {
+      background: #e31c5f;
+    }
+  }
+}
+
+// ── Profile: Wishlists tab ──────────────────────────────────
+.wl-tab {
+  &__loading {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    padding: 40px 0;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 0;
+    color: #888;
+
+    i {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 12px;
+      color: #ccc;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(---text-color);
+      margin: 0 0 6px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding-top: 8px;
+  }
+}
+
+// ── Collection card ─────────────────────────────────────────
+.wl-collection-card {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+
+  &__cover {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ebebeb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    html.dark & {
+      background: #2a2a2a;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease;
+    }
+
+    i {
+      font-size: 32px;
+      color: #aaa;
+    }
+  }
+
+  &:hover &__cover img {
+    transform: scale(1.04);
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(---text-color);
+    margin: 0 0 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__count {
+    font-size: 13px;
+    color: #888;
+    margin: 0;
+  }
+}
+
+// ── Collection view ─────────────────────────────────────────
+.wl-collection-view {
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(---text-color);
+    padding: 0;
+    margin-bottom: 16px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(---text-color);
+    margin: 0 0 24px;
+  }
+
+  &__loading {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    padding: 40px 0;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 0;
+    color: #888;
+
+    i {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 12px;
+      color: #ccc;
+    }
+
+    p {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(---text-color);
+      margin: 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+// ── Room card inside collection view ────────────────────────
+.wl-room-card {
+  position: relative;
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: var(---text-color);
+  }
+
+  &__image-wrap {
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ebebeb;
+    margin-bottom: 10px;
+
+    html.dark & {
+      background: #2a2a2a;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease;
+    }
+  }
+
+  &__link:hover &__image-wrap img {
+    transform: scale(1.04);
+  }
+
+  &__no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      font-size: 32px;
+      color: #aaa;
+    }
+  }
+
+  &__body {
+    padding-right: 32px;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__price {
+    font-size: 13px;
+    margin: 0;
+
+    strong {
+      font-weight: 700;
+    }
+
+    span {
+      font-weight: 400;
+      color: #888;
+    }
+  }
+
+  &__remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 150ms, transform 150ms;
+    padding: 0;
+
+    i {
+      font-size: 15px;
+      color: #ff385c;
+      line-height: 1;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.97);
+      transform: scale(1.1);
+    }
+  }
+}

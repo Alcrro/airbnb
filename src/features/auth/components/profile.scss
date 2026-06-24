@@ -1,0 +1,199 @@
+.user-profile {
+  display: block;
+  padding: 5px 0;
+
+  .profile-guest {
+    display: block;
+
+    &::after {
+      content: "\F4D7";
+      font-family: "Bootstrap-icons";
+      font-size: 32px;
+      color: var(---text-color);
+    }
+
+    &:hover::after {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    display: block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+  }
+}
+
+// ── Popover wrapper ──────────────────────────────────────────
+.profile-popover-wrap {
+  position: relative;
+}
+
+.profile-avatar-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+}
+
+// ── Popover card ─────────────────────────────────────────────
+.profile-popover {
+  // Mobile: fixed, centered without transform (avoids conflict with popoverIn animation)
+  position: fixed;
+  top: 76px;
+  left: max(16px, calc(50% - 150px));
+  right: auto;
+  transform: none;
+  width: min(300px, calc(100vw - 32px));
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+  z-index: 999;
+  overflow: hidden;
+  animation: popoverIn 150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  html.dark & {
+    background: #1a1a2e;
+    border-color: #2e2e3e;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  }
+
+  @media (min-width: 720px) {
+    position: fixed;
+    top: 76px;
+    right: max(16px, calc((100vw - 1280px) / 2 - 67px));
+    left: auto;
+    width: 300px;
+    margin-left: 0;
+    transform: none;
+  }
+
+  &__heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #888;
+    padding: 14px 16px 6px;
+    margin: 0;
+  }
+
+  &__empty {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+    padding: 10px 16px 4px;
+    margin: 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 0;
+
+    li { margin: 0; }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 110ms ease;
+
+    html.dark & { border-color: #252535; }
+
+    &:hover {
+      background: #fafafa;
+      html.dark & { background: #202032; }
+    }
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__room {
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.35;
+    white-space: normal;
+
+    html.dark & { color: #f0f0f0; }
+  }
+
+  &__dates {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #555;
+
+    html.dark & { color: #aaa; }
+
+    i { font-size: 11px; }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #888;
+
+    i {
+      font-size: 11px;
+      margin-right: 4px;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    color: #222;
+    font-size: 13px;
+
+    html.dark & { color: #f0f0f0; }
+  }
+
+  &__see-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff385c;
+    text-decoration: none;
+    border-top: 1px solid #f0f0f0;
+    transition: background 110ms ease;
+
+    html.dark & {
+      border-color: #2e2e3e;
+      color: #ff6b91;
+    }
+
+    &:hover {
+      background: #fff5f7;
+      html.dark & { background: #2a1a20; }
+    }
+
+    i { font-size: 11px; }
+  }
+}
+
+@keyframes popoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

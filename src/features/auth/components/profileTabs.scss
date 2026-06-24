@@ -1,0 +1,348 @@
+// ── Info tab ─────────────────────────────────────────────────
+.profile-info-tab {
+  &__section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(---text-color);
+    margin: 0 0 16px;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ebebeb;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 36px;
+
+    html.dark & {
+      border-color: #333;
+    }
+  }
+
+  &__field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #ebebeb;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    html.dark & {
+      border-color: #333;
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #888;
+  }
+
+  &__value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(---text-color);
+  }
+
+  &__verifications {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__verify-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+
+    i {
+      font-size: 18px;
+    }
+
+    html.dark & {
+      color: #bbb;
+    }
+
+    &--ok i {
+      color: #008a05;
+
+      html.dark & {
+        color: #4caf50;
+      }
+    }
+  }
+}
+
+// ── Bookings tab ─────────────────────────────────────────────
+.bookings-tab {
+  &__group {
+    margin-bottom: 36px;
+  }
+
+  &__group-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 14px;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  // ── Empty state ──────────────────────────────────────────
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  &__empty-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+
+    i {
+      font-size: 30px;
+      color: #bbb;
+    }
+
+    html.dark & {
+      background: #252535;
+
+      i { color: #555; }
+    }
+  }
+
+  &__empty-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(---text-color);
+    margin: 0 0 8px;
+  }
+
+  &__empty-sub {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 22px;
+    max-width: 260px;
+    line-height: 1.5;
+  }
+
+  &__empty-cta {
+    padding: 11px 24px;
+    background: #222;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 140ms ease;
+
+    &:hover { opacity: 0.85; }
+
+    html.dark & {
+      background: #fff;
+      color: #222;
+    }
+  }
+
+  // ── Skeleton loader ──────────────────────────────────────
+  &__skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__skeleton-card {
+    height: 122px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.4s infinite;
+
+    html.dark & {
+      background: linear-gradient(90deg, #252535 25%, #1e1e2e 50%, #252535 75%);
+      background-size: 200% 100%;
+    }
+  }
+}
+
+@keyframes skeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// ── Booking card ──────────────────────────────────────────────
+.booking-card {
+  display: flex;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 180ms ease, transform 180ms ease;
+
+  html.dark & {
+    border-color: #2e2e3e;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+    transform: translateY(-2px);
+
+    html.dark & {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  // ── Left accent bar ──────────────────────────────────────
+  &__accent {
+    width: 5px;
+    flex-shrink: 0;
+  }
+
+  &--upcoming &__accent { background: #ff385c; }
+  &--past    &__accent { background: #d0d0d0; html.dark & { background: #3a3a4a; } }
+
+  // ── Card body ────────────────────────────────────────────
+  &__body {
+    flex: 1;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  // ── Top row: name + badge ────────────────────────────────
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(---text-color);
+    text-decoration: none;
+    line-height: 1.3;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &__badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+
+    &--upcoming {
+      background: #fff0f3;
+      color: #e31c5f;
+
+      html.dark & {
+        background: rgba(227, 28, 95, 0.15);
+        color: #ff6b91;
+      }
+    }
+
+    &--past {
+      background: #f5f5f5;
+      color: #888;
+
+      html.dark & {
+        background: #252535;
+        color: #666;
+      }
+    }
+  }
+
+  // ── Dates row ────────────────────────────────────────────
+  &__dates {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__date-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__date-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  &__date-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(---text-color);
+  }
+
+  &__date-arrow {
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 14px;
+  }
+
+  // ── Footer: pills + total ────────────────────────────────
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+    background: #f5f5f5;
+    padding: 4px 10px;
+    border-radius: 20px;
+
+    i { font-size: 11px; }
+
+    html.dark & {
+      background: #252535;
+      color: #aaa;
+    }
+  }
+
+  &__total {
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(---text-color);
+  }
+}
