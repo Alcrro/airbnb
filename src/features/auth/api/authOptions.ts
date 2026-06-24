@@ -5,6 +5,7 @@ import { ConnectDB } from "@/shared/db/ConnectDB";
 import User from "@/features/auth/models/User";
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "credentials",
