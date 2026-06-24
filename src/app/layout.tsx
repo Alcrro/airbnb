@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import Navbar from "../components/header/navbar/Navbar";
+import Navbar from "@/shared/components/Navbar";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { ThemeProvider } from "next-themes";
-import { NavbarProvider } from "@/context/navbarContext/NavbarContext";
-import { WidthProvider } from "@/context/width/WidthContext";
-import AuxNavbar from "@/components/header/auxNavbar/AuxNavbar";
+import { NavbarProvider } from "@/shared/context/NavbarContext";
+import { WidthProvider } from "@/shared/context/WidthContext";
+import AuxNavbar from "@/features/property-filter/components/AuxNavbar";
+import Providers from "@/shared/components/Providers";
+import ConditionalNavbars from "@/shared/components/ConditionalNavbars";
+import { WishlistProvider } from "@/features/wishlist/context/WishlistContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,13 +26,19 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="">
         <ThemeProvider attribute="class">
-          <NavbarProvider>
-            <WidthProvider>
-              <Navbar />
-              <AuxNavbar />
-              <div className="main">{children}</div>
-            </WidthProvider>
-          </NavbarProvider>
+          <Providers>
+            <WishlistProvider>
+            <NavbarProvider>
+              <WidthProvider>
+                <ConditionalNavbars>
+                  <Navbar />
+                  <AuxNavbar />
+                </ConditionalNavbars>
+                <div className="main">{children}</div>
+              </WidthProvider>
+            </NavbarProvider>
+            </WishlistProvider>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

@@ -1,0 +1,297 @@
+.search-container {
+  display: flex;
+  flex: 1 0 33%;
+  flex-basis: 100%;
+  padding: 6px 0 14px;
+
+  .search {
+    display: flex;
+    width: 100%;
+    max-width: 52rem;
+    margin: 0 auto;
+    align-items: center;
+    background: var(---background-color);
+    border: 1px solid #dddddd;
+    border-radius: 40px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 200ms ease;
+    overflow: visible;
+
+    html.dark & {
+      border-color: #444;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    &:hover {
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.14);
+
+      html.dark & {
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    // When any field is hovered, tint the background
+    @media (min-width: 720px) {
+      &:has(.type:hover) {
+        background: #ebebeb;
+        border-color: transparent;
+
+        html.dark & {
+          background: #2c2c3c;
+          border-color: transparent;
+        }
+      }
+    }
+
+    .search-inner {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+// ── Individual field ──────────────────────────────────────────
+.type {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+
+  &:hover {
+    > .label-group {
+      background: var(---background-color);
+      border-radius: 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+
+      html.dark & {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    // When hovered, remove the separator on this field and the one after it
+    + .relative > .type > .label-group,
+    > .label-group {
+      border-right-color: transparent;
+    }
+  }
+}
+
+.label-group {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 40px;
+  transition: background 150ms ease, box-shadow 150ms ease;
+  border-right: 1px solid #dddddd;
+  height: 100%;
+  box-sizing: border-box;
+
+  html.dark & {
+    border-right-color: #444;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: var(---text-color);
+    white-space: nowrap;
+    margin-bottom: 2px;
+  }
+
+  span {
+    font-size: 13px;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    html.dark & {
+      color: #666;
+    }
+  }
+}
+
+// Remove right border on last field before button
+.who-guest .label-group,
+.experience .label-group {
+  border-right: none;
+}
+
+// Field sizing
+.where .label-group {
+  min-width: 150px;
+}
+
+.check-in .label-group,
+.check-out .label-group {
+  min-width: 110px;
+}
+
+.who-guest .label-group {
+  min-width: 110px;
+}
+
+.experience {
+  flex: 2;
+
+  .label-group {
+    min-width: 200px;
+    border-right: none;
+  }
+}
+
+// ── Dropdowns ────────────────────────────────────────────────
+
+// ── Mobile ────────────────────────────────────────────────────
+@media (max-width: 719px) {
+  .modal-type-tabs {
+    left: 0;
+    right: 0;
+    width: auto;
+
+    .where-tabs {
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+  }
+
+  .search-container {
+    padding: 8px 0 10px;
+
+    .search {
+      position: relative;
+      border-radius: 16px;
+
+      // Pin the search button to the top-right corner so .search-inner fills full width
+      .search-button {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        z-index: 1;
+      }
+
+      .search-inner {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0;
+        padding-right: 66px; // leave room for the pinned button
+
+        &::before {
+          display: none;
+        }
+
+        .label-group {
+          display: none;
+        }
+
+        // Ensure dropdown content is always visible
+        .modal-type-tabs span {
+          display: block;
+        }
+
+        // Where — full-width destination row
+        .where {
+          display: block;
+          width: calc(100% + 66px); // expand past the padding-right to reach the button edge
+          flex: unset;
+
+          .label-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 80px 12px 16px; // right pad keeps text clear of button
+            border-right: none;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0;
+            height: auto;
+
+            html.dark & { border-bottom-color: #444; }
+
+            label {
+              font-weight: 700;
+              font-size: 13px;
+              white-space: nowrap;
+              color: var(---text-color);
+            }
+
+            span {
+              display: block;
+              font-size: 13px;
+              color: #aaa;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+
+        // Check-in / Check-out / Who — compact chip row
+        .check-in,
+        .check-out,
+        .who-guest {
+          flex: 1;
+          min-width: 0;
+
+          // position: fixed escapes the sticky navbar stacking context entirely
+          // No transform — the modalSlideIn animation resets transform and would break centering
+          .modal-type-tabs {
+            position: fixed;
+            top: 162px;
+            left: max(12px, calc(50% - 170px));
+            right: auto;
+            width: calc(100vw - 24px);
+            max-width: 340px;
+
+            .calendar,
+            .who-tabs {
+              width: 100%;
+              min-width: 0;
+              box-sizing: border-box;
+            }
+          }
+
+          .label-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 10px 14px;
+            border-radius: 0;
+            border-right: 1px solid #ddd;
+            height: auto;
+            min-width: 0;
+
+            html.dark & { border-right-color: #444; }
+
+            label {
+              font-size: 10px;
+              font-weight: 700;
+              color: var(---text-color);
+              white-space: nowrap;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+            }
+
+            span {
+              display: block;
+              font-size: 12px;
+              color: #aaa;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+
+        .who-guest .label-group {
+          border-right: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+.who-tabs {
+  padding: 16px;
+  min-width: 320px;
+
+  @media (max-width: 719px) {
+    min-width: 0;
+    padding: 12px;
+  }
+}
+
+.guest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+
+  html.dark & {
+    border-color: #333;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.guest-info {
+  flex: 1;
+}
+
+.guest-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(---text-color);
+}
+
+.guest-desc {
+  font-size: 13px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.guest-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guest-count {
+  font-size: 16px;
+  min-width: 20px;
+  text-align: center;
+  color: var(---text-color);
+}
+
+.guest-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(---text-color);
+  padding: 0;
+  transition: border-color 140ms ease, transform 140ms cubic-bezier(0.34, 1.56, 0.64, 1), background 140ms ease;
+
+  html.dark & {
+    border-color: #555;
+  }
+
+  &:disabled {
+    color: #ccc;
+    border-color: #eee;
+    cursor: not-allowed;
+
+    html.dark & {
+      color: #444;
+      border-color: #333;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #222;
+    transform: scale(1.1);
+
+    html.dark & {
+      border-color: #fff;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.9);
+  }
+}
+
+.who-done-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  html.dark & {
+    background: #fff;
+    color: #222;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

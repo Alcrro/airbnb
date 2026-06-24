@@ -1,0 +1,20 @@
+.theme-button {
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    font-family: "Bootstrap-icons";
+    color: var(---text-color);
+    font-size: 20px;
+    content: "\F494";
+
+    html.dark & {
+      content: "\F1D1";
+    }
+  }
+}

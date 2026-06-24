@@ -1,0 +1,35 @@
+.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  flex-shrink: 0;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff385c 0%, #e31c5f 100%);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+    box-shadow: 0 2px 8px rgba(255, 56, 92, 0.45);
+
+    &:hover {
+      transform: scale(1.06);
+      box-shadow: 0 4px 14px rgba(255, 56, 92, 0.55);
+    }
+
+    &::after {
+      content: "\F52A";
+      font-family: "Bootstrap-icons";
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      line-height: 1;
+    }
+  }
+}

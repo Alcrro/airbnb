@@ -1,9 +1,13 @@
-import Rooms from "@/components/home/rooms/Rooms";
+import Rooms from "@/features/listings/components/Rooms";
 
-export default function Home() {
+interface Props {
+  searchParams: { location?: string; checkIn?: string; checkOut?: string; guests?: string };
+}
+
+export default function Home({ searchParams }: Props) {
   return (
-    <main className="">
-      <Rooms />
+    <main>
+      <Rooms searchParams={searchParams} />
     </main>
   );
 }

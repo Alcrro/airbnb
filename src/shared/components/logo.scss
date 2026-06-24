@@ -1,0 +1,23 @@
+.logo-container {
+  flex-shrink: 0;
+
+  @media (max-width: 719px) {
+    display: none;
+  }
+
+  a {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    font-style: italic;
+    color: #ff385c;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}

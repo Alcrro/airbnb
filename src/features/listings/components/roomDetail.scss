@@ -1,0 +1,499 @@
+.room-detail {
+  padding: 24px 0 80px;
+
+  // ── Header ───────────────────────────────────────────────────
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(---text-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 20px;
+    opacity: 0.65;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(---text-color);
+    line-height: 1.3;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    color: var(---text-color);
+
+    i {
+      color: #ff385c;
+      font-size: 12px;
+    }
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(---text-version);
+
+    &::before {
+      content: "·";
+      margin-right: 6px;
+    }
+
+    i {
+      font-size: 12px;
+      color: #ff385c;
+    }
+  }
+
+  &__type {
+    color: var(---text-version);
+
+    &::before {
+      content: "·";
+      margin-right: 6px;
+    }
+  }
+
+  // ── Gallery ──────────────────────────────────────────────────
+  &__gallery {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ebebeb;
+    margin-bottom: 36px;
+
+    html.dark & {
+      background: #2a2a3a;
+    }
+  }
+
+  &__gallery-main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__gallery-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    i {
+      font-size: 80px;
+      color: #aaa;
+    }
+  }
+
+  // ── Body ─────────────────────────────────────────────────────
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 56px;
+    align-items: start;
+  }
+
+  // ── Info column ───────────────────────────────────────────────
+  &__section {
+    padding: 28px 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    html.dark & {
+      border-bottom-color: #3a3a4a;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 18px;
+    color: var(---text-color);
+  }
+
+  // Host
+  &__host {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    html.dark & {
+      background: #444;
+    }
+
+    i {
+      font-size: 28px;
+      color: #999;
+    }
+  }
+
+  &__host-label {
+    margin: 0;
+    font-size: 13px;
+    color: var(---text-version);
+  }
+
+  &__host-name {
+    margin: 3px 0 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(---text-color);
+  }
+
+  &__host-meta {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(---text-version);
+  }
+
+  // Quick stats chips
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+
+    @media (min-width: 480px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(---text-color);
+    background: #f7f7f7;
+    border-radius: 10px;
+    padding: 10px 12px;
+
+    html.dark & { background: #1e1e2e; }
+    i { font-size: 16px; color: var(---text-version); flex-shrink: 0; }
+  }
+
+  &__dot {
+    color: var(---text-version);
+  }
+
+  // Description
+  &__description {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(---text-color);
+    margin: 0;
+    white-space: pre-line;
+  }
+
+  // Amenities
+  &__amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  &__amenity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    color: var(---text-color);
+
+    i {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__show-more {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 11px 22px;
+    background: transparent;
+    border: 1px solid var(---text-color);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(---text-color);
+    transition: background 150ms ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    html.dark &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  // ── Superhost badge ───────────────────────────────────────────
+  &__superhost {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff385c;
+    border: 1px solid #ff385c;
+    border-radius: 20px;
+    padding: 2px 8px;
+
+    i { font-size: 13px; }
+  }
+
+  &__host-about {
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(---text-version);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // ── Info rows (transit / access) ──────────────────────────────
+  &__info-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    i {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(---text-version);
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // ── Stay details ─────────────────────────────────────────────
+  &__stay-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  &__stay-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    i {
+      font-size: 20px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      color: var(---text-version);
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+  }
+
+  &__stay-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(---text-version);
+  }
+
+  &__stay-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(---text-color);
+    text-transform: capitalize;
+  }
+
+  // ── Review scores breakdown ───────────────────────────────────
+  &__scores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__score-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 32px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__score-label {
+    font-size: 14px;
+    color: var(---text-color);
+  }
+
+  &__score-bar {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+
+    html.dark & {
+      background: #444;
+    }
+  }
+
+  &__score-fill {
+    height: 100%;
+    background: #222;
+    border-radius: 2px;
+
+    html.dark & {
+      background: #fff;
+    }
+  }
+
+  &__score-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(---text-color);
+    text-align: right;
+  }
+
+  // ── Guest reviews ────────────────────────────────────────────
+  &__reviews {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__review {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__review-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+
+    html.dark & { background: #fff; color: #222; }
+  }
+
+  &__review-name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(---text-color);
+  }
+
+  &__review-date {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(---text-version);
+  }
+
+  &__review-text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(---text-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // ── Responsive ───────────────────────────────────────────────
+  @media (max-width: 1024px) {
+    &__body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__gallery {
+      height: 300px;
+      border-radius: 0;
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    &__title {
+      font-size: 22px;
+    }
+
+    &__amenities-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__body {
+      gap: 0;
+    }
+  }
+}

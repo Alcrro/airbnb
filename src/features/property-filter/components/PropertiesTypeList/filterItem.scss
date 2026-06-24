@@ -1,0 +1,42 @@
+.filter-item {
+  flex-shrink: 0;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 14px 10px;
+    text-decoration: none;
+    color: #aaaaaa;
+    border-bottom: 2px solid transparent;
+    transition: color 150ms ease, border-color 150ms ease;
+    white-space: nowrap;
+    cursor: pointer;
+
+    html.dark & {
+      color: #666;
+    }
+
+    &:hover {
+      color: var(---text-color);
+      border-bottom-color: var(---text-color);
+    }
+
+    i {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
+    }
+  }
+
+  &--active &__link {
+    color: var(---text-color);
+    border-bottom-color: var(---text-color);
+  }
+}

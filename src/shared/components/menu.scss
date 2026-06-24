@@ -1,0 +1,40 @@
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  border: 1px solid #dddddd;
+  padding: 6px 8px 6px 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: box-shadow 150ms ease;
+  background: transparent;
+
+  html.dark & {
+    border-color: #444;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+
+    html.dark & {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .dropdown-menu-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &::after {
+      content: "\F479";
+      font-family: "Bootstrap-icons";
+      font-size: 18px;
+      color: var(---text-color);
+      display: block;
+      line-height: 1;
+    }
+  }
+}

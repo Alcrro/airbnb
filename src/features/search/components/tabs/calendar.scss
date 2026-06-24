@@ -1,0 +1,121 @@
+.calendar {
+  padding: 12px 14px;
+  user-select: none;
+  min-width: 280px;
+
+  @media (max-width: 719px) {
+    padding: 10px 12px;
+    min-width: 0;
+  }
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cal-month-label {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(---text-color);
+}
+
+.cal-btn {
+  background: none;
+  border: 1px solid;
+  border-color: #ddd;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(---text-color);
+  padding: 0;
+  font-size: 12px;
+  line-height: 1;
+
+  html.dark & {
+    border-color: #555;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+
+    html.dark & {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.cal-header {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+  padding: 3px 0 6px;
+}
+
+.cal-day {
+  text-align: center;
+  font-size: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(---text-color);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+
+  @media (max-width: 719px) {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+
+  &:hover:not(.disabled) {
+    background: rgba(0, 0, 0, 0.08);
+    transform: scale(1.12);
+
+    html.dark & {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &:active:not(.disabled) {
+    transform: scale(0.92);
+  }
+
+  &.selected {
+    background: #222;
+    color: #fff;
+    transform: scale(1.08);
+
+    html.dark & {
+      background: #fff;
+      color: #222;
+    }
+  }
+
+  &.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    html.dark & {
+      color: #444;
+    }
+  }
+}
