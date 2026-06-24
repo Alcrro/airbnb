@@ -12,6 +12,7 @@ export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -67,15 +68,25 @@ export default function SignupForm() {
           </div>
           <div className="field">
             <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Min. 8 characters"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              minLength={8}
-              required
-            />
+            <div className="password-wrapper">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Min. 8 characters"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength={8}
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`} />
+              </button>
+            </div>
           </div>
           {error && <p className="auth-error">{error}</p>}
           <button type="submit" className="auth-submit" disabled={loading}>

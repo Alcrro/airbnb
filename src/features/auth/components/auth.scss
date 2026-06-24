@@ -227,6 +227,7 @@
         color: var(---text-color);
         outline: none;
         transition: border-color 150ms ease;
+        width: 100%;
 
         html.dark & {
           border-color: #444;
@@ -237,6 +238,39 @@
 
           html.dark & {
             border-color: #aaa;
+          }
+        }
+      }
+
+      .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        input {
+          padding-right: 44px;
+        }
+      }
+
+      .password-toggle {
+        position: absolute;
+        right: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: #888;
+        font-size: 18px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        transition: color 150ms ease;
+
+        &:hover {
+          color: #222;
+
+          html.dark & {
+            color: #fff;
           }
         }
       }
