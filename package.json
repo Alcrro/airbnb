@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "set NODE_ENV=production && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync-env": "bash scripts/sync-env.sh"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

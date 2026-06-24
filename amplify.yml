@@ -9,6 +9,8 @@ frontend:
       commands:
         - echo "HOST_URI=$HOST_URI" >> .env.local
         - echo "MONGO_URI=$MONGO_URI" >> .env.local
+        - echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env.local
+        - echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env.local
         - npm run build
   artifacts:
     baseDirectory: .next
