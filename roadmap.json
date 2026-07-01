@@ -25,10 +25,10 @@
   },
   {
     "name": "Booking",
-    "status": "not-started"
+    "status": "planned"
   },
   {
     "name": "Wishlist",
-    "status": "not-started"
+    "status": "planned"
   }
 ]
