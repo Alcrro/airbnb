@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Listings",
+    "status": "done"
+  },
+  {
+    "name": "Auth",
+    "status": "in-progress"
+  },
+  {
+    "name": "Search",
+    "status": "in-progress"
+  },
+  {
+    "name": "Location Filter",
+    "status": "in-progress"
+  },
+  {
+    "name": "Property Type Filter",
+    "status": "in-progress"
+  },
+  {
+    "name": "Reviews",
+    "status": "in-progress"
+  },
+  {
+    "name": "Booking",
+    "status": "not-started"
+  },
+  {
+    "name": "Wishlist",
+    "status": "not-started"
+  }
+]
